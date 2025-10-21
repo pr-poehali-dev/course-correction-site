@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
-  const navigationItems = [
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const menuItems = [
     "О НАС",
     "СТРУКТУРА ХМАО ВОИ",
     "КОНВЕНЦИЯ ООН О ПРАВАХ ИНВАЛИДОВ",
@@ -12,132 +15,155 @@ const Index = () => {
     "НОВОСТИ",
     "МЕРОПРИЯТИЯ",
     "ФОТОГАЛЕРЕЯ",
-    "ДОКУМЕНТЫ"
+    "ДОКУМЕНТЫ",
   ];
 
   const newsItems = [
     {
       image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
       title: "Хотите чувствовать себя лучше, выглядеть моложе и забыть о депрессии?",
-      date: "22 часа назад",
-      comments: 0
+      time: "22 часа назад",
     },
     {
       image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
       title: "В Югре ужесточились правила оказания медпомощи иностранцам",
-      date: "22 часа назад",
-      comments: 0
+      time: "22 часа назад",
     },
     {
       image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
-      title: "В преддверии празднование праздника Дня Отца «ВместеСПапой» В ДК «Ника» первичная ячейка Каркатеевы команда «Сильные Духом»",
-      date: "22 часа назад",
-      comments: 0
-    }
+      title: "В преддверии празднование праздника Дня Отца «ВместеПапой!» В ДК «Ника»",
+      time: "22 часа назад",
+    },
   ];
 
-  const calendarDays = [
+  const calendar = [
     [null, null, null, 1, 2, 3, 4, 5],
     [6, 7, 8, 9, 10, 11, 12],
     [13, 14, 15, 16, 17, 18, 19],
     [20, 21, 22, 23, 24, 25, 26],
-    [27, 28, 29, 30, 31]
+    [27, 28, 29, 30, 31, null, null],
   ];
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-4">
-              <img 
-                src="https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png" 
-                alt="ВОИ Лого" 
-                className="h-12 w-12 object-contain"
-              />
+          <div className="flex items-center justify-between gap-4 py-4">
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-red-600 rounded-full flex items-center justify-center">
+                <span className="text-xl text-white font-bold">ВОИ</span>
+              </div>
             </div>
             
-            <nav className="hidden lg:flex items-center gap-6 text-sm">
-              {navigationItems.map((item, index) => (
-                <a 
-                  key={index} 
-                  href="#" 
-                  className="text-foreground hover:text-primary transition-colors font-medium"
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1 justify-center">
+              {menuItems.map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-xs font-medium text-gray-700 hover:text-blue-600 transition-all whitespace-nowrap py-2 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-blue-600 after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                 >
                   {item}
                 </a>
               ))}
             </nav>
 
-            <div className="flex items-center gap-4">
-              <Button variant="ghost" size="sm" className="text-sm">
-                <Icon name="Eye" className="mr-2" size={16} />
-                Версия для слабовидящих
-              </Button>
-              <Button variant="ghost" size="icon">
-                <Icon name="Search" size={20} />
-              </Button>
-            </div>
+            <Button className="hidden lg:flex bg-red-600 text-white hover:bg-red-700 font-medium whitespace-nowrap flex-shrink-0">
+              <Icon name="Eye" className="mr-2 h-4 w-4" />
+              Версия для слабовидящих
+            </Button>
+
+            <Button variant="ghost" className="lg:hidden flex-shrink-0" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              <Icon name="Menu" className="h-6 w-6" />
+            </Button>
           </div>
+          
+          {mobileMenuOpen && (
+            <div className="lg:hidden border-t py-4 animate-fade-in">
+              <nav className="flex flex-col gap-3">
+                {menuItems.map((item) => (
+                  <a
+                    key={item}
+                    href="#"
+                    className="text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors px-4 py-2 hover:bg-gray-100 rounded"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-blue-600 to-secondary py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+      <section className="relative bg-gradient-to-r from-blue-500 via-blue-600 to-green-500 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZjEwIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="text-white space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Вместе мы сможем больше!
               </h1>
-              <div className="space-y-3 text-lg">
-                <p className="font-semibold">Ханты-Мансийская общественная</p>
-                <p className="font-semibold">региональная организация</p>
-                <p>Общероссийской общественной организации</p>
-                <p className="text-xl font-bold">«Всероссийское общество инвалидов»</p>
+              <div className="space-y-4">
+                <p className="text-xl text-white font-semibold">
+                  Ханты-Мансийская общественная
+                </p>
+                <p className="text-xl text-white font-semibold">
+                  региональная организация
+                </p>
+                <p className="text-white text-lg">
+                  Общероссийской общественной организации
+                </p>
+                <p className="text-white text-lg font-bold">
+                  «Всероссийское общество инвалидов»
+                </p>
               </div>
             </div>
 
-            <Card className="bg-white/95 backdrop-blur">
-              <CardHeader>
-                <h3 className="text-2xl font-bold text-foreground">Контакты</h3>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <Icon name="MapPin" className="text-primary mt-1" size={20} />
-                  <div>
-                    <p className="font-medium">г. Ханты-Мансийск,</p>
-                    <p className="text-muted-foreground">ул. Пионерская, 27</p>
+            <Card className="bg-gray-100 backdrop-blur shadow-2xl animate-slide-in-right border-t-4 border-red-600">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-red-600 pb-3">
+                  Контакты
+                </h3>
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <Icon name="MapPin" className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-medium">г. Ханты-Мансийск,</p>
+                      <p className="text-gray-600">ул. Пионерская, 27</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Icon name="Phone" className="text-primary" size={20} />
-                  <a href="tel:+73467320976" className="hover:text-primary transition-colors">
-                    +7 (3467) 320-976
-                  </a>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Icon name="Mail" className="text-primary" size={20} />
-                  <a href="mailto:hmao-voi@mail.ru" className="hover:text-primary transition-colors">
-                    hmao-voi@mail.ru
-                  </a>
-                </div>
-
-                <div className="flex gap-3 pt-2">
-                  <Button size="icon" variant="outline" className="rounded-full">
-                    <Icon name="Facebook" size={20} />
-                  </Button>
-                  <Button size="icon" variant="outline" className="rounded-full">
-                    <Icon name="Twitter" size={20} />
-                  </Button>
-                  <Button size="icon" variant="outline" className="rounded-full">
-                    <Icon name="Instagram" size={20} />
-                  </Button>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <Icon name="Phone" className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <a href="tel:+73467320976" className="text-gray-900 font-medium hover:text-blue-600 transition-colors">
+                        +7 (3467) 320-976
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <Icon name="Mail" className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <a href="mailto:hmao-voi@mail.ru" className="text-gray-900 font-medium hover:text-blue-600 transition-colors">
+                        hmao-voi@mail.ru
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 pt-4 border-t">
+                    <a
+                      href="#"
+                      className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-all transform hover:scale-110"
+                    >
+                      <Icon name="Users" className="h-6 w-6 text-white" />
+                    </a>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -145,37 +171,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* News Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <p className="text-sm text-muted-foreground mb-2">Главная</p>
-            <h2 className="text-4xl font-bold text-foreground">Новости</h2>
+          <div className="text-center mb-4">
+            <p className="text-sm text-gray-500 mb-2">Главная</p>
+            <h2 className="text-4xl font-bold text-gray-900">Новости</h2>
           </div>
 
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8 mt-12">
             <div className="lg:col-span-3">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-3 gap-6">
                 {newsItems.map((item, index) => (
-                  <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                    <div className="aspect-video bg-gray-200 overflow-hidden">
+                  <Card key={index} className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-t-4 border-blue-600 group">
+                    <div className="relative h-48 overflow-hidden">
                       <img 
                         src={item.image} 
                         alt={item.title}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                    </div>
-                    <CardContent className="p-4 space-y-3">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Icon name="Clock" size={14} />
-                        <span>{item.date}</span>
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2">
+                        <Icon name="Clock" className="h-4 w-4 text-blue-600" />
+                        <span className="text-xs font-medium text-gray-700">{item.time}</span>
                       </div>
-                      <h3 className="font-semibold text-foreground leading-tight hover:text-primary transition-colors cursor-pointer">
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-3">
                         {item.title}
                       </h3>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <Icon name="MessageCircle" size={14} />
-                        <span>{item.comments}</span>
+                      <div className="flex items-center gap-2 mt-4">
+                        <Icon name="MessageCircle" className="h-4 w-4 text-gray-400" />
+                        <span className="text-sm text-gray-500">0</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -183,90 +208,86 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Calendar Sidebar */}
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <h3 className="text-xl font-bold text-center text-foreground">
+            <div>
+              <Card className="border-t-4 border-red-600 shadow-lg">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 border-b-2 border-red-600 pb-2">
                     Архив новостей
                   </h3>
-                  <p className="text-center text-muted-foreground">Октябрь 2025</p>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    <div className="grid grid-cols-7 gap-1 text-xs font-semibold text-center mb-2">
-                      <div>Пн</div>
-                      <div>Вт</div>
-                      <div>Ср</div>
-                      <div>Чт</div>
-                      <div>Пт</div>
-                      <div>Сб</div>
-                      <div>Вс</div>
+                  <div className="mb-4">
+                    <p className="text-center font-semibold text-gray-700 mb-3">Октябрь 2025</p>
+                    <div className="grid grid-cols-7 gap-1 text-xs">
+                      <div className="text-center font-semibold text-gray-600 p-1">Пн</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Вт</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Ср</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Чт</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Пт</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Сб</div>
+                      <div className="text-center font-semibold text-gray-600 p-1">Вс</div>
+                      {calendar.flat().map((day, i) => (
+                        <div 
+                          key={i} 
+                          className={`text-center p-1 rounded ${
+                            day ? 'hover:bg-blue-100 cursor-pointer text-gray-700' : ''
+                          } ${day === 21 ? 'bg-blue-600 text-white font-bold' : ''}`}
+                        >
+                          {day || ''}
+                        </div>
+                      ))}
                     </div>
-                    {calendarDays.map((week, weekIndex) => (
-                      <div key={weekIndex} className="grid grid-cols-7 gap-1">
-                        {week.map((day, dayIndex) => (
-                          <div
-                            key={dayIndex}
-                            className={`aspect-square flex items-center justify-center text-sm rounded ${
-                              day
-                                ? "hover:bg-primary hover:text-white cursor-pointer transition-colors"
-                                : ""
-                            }`}
-                          >
-                            {day || ""}
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                    <p className="text-xs text-blue-600 mt-3 cursor-pointer hover:underline">« Сен</p>
                   </div>
-                  <a href="#" className="text-primary text-sm hover:underline block mt-4">
-                    « Сен
-                  </a>
+                  <div className="space-y-3 border-t pt-4">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                      НАПИСАТЬ
+                    </Button>
+                    <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
+                      СООБЩЕНИЕ
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
-
-              <div className="space-y-2">
-                <Button className="w-full">НАПИСАТЬ</Button>
-                <Button variant="outline" className="w-full">СООБЩЕНИЕ</Button>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-white py-12">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
+          <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h4 className="font-bold mb-4">О нас</h4>
-              <p className="text-sm text-gray-300">
-                Ханты-Мансийская общественная региональная организация ВОИ
+              <h4 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2 inline-block">О нас</h4>
+              <p className="text-gray-400 leading-relaxed">
+                Ханты-Мансийская региональная организация Всероссийского общества инвалидов
               </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Контакты</h4>
-              <p className="text-sm text-gray-300">г. Ханты-Мансийск</p>
-              <p className="text-sm text-gray-300">ул. Пионерская, 27</p>
-              <p className="text-sm text-gray-300">+7 (3467) 320-976</p>
+              <h4 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2 inline-block">Контакты</h4>
+              <div className="space-y-3 text-gray-400">
+                <p className="flex items-center gap-2">
+                  <Icon name="MapPin" className="h-5 w-5 text-blue-600" />
+                  г. Ханты-Мансийск, ул. Пионерская, 27
+                </p>
+                <p className="flex items-center gap-2">
+                  <Icon name="Phone" className="h-5 w-5 text-blue-600" />
+                  +7 (3467) 320-976
+                </p>
+                <p className="flex items-center gap-2">
+                  <Icon name="Mail" className="h-5 w-5 text-blue-600" />
+                  hmao-voi@mail.ru
+                </p>
+              </div>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Социальные сети</h4>
-              <div className="flex gap-3 justify-center md:justify-start">
-                <Button size="icon" variant="ghost" className="text-white hover:text-secondary">
-                  <Icon name="Facebook" size={20} />
-                </Button>
-                <Button size="icon" variant="ghost" className="text-white hover:text-secondary">
-                  <Icon name="Twitter" size={20} />
-                </Button>
-                <Button size="icon" variant="ghost" className="text-white hover:text-secondary">
-                  <Icon name="Instagram" size={20} />
-                </Button>
+              <h4 className="text-xl font-bold mb-4 border-b-2 border-blue-600 pb-2 inline-block">Социальные сети</h4>
+              <div className="flex gap-4">
+                <a href="#" className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center hover:bg-blue-700 transition-all transform hover:scale-110">
+                  <Icon name="Users" className="h-6 w-6" />
+                </a>
               </div>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
             <p>© 2025 ХМАО ВОИ. Все права защищены.</p>
           </div>
         </div>
