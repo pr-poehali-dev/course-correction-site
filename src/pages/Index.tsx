@@ -47,31 +47,31 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center justify-between gap-4 py-4">
+            <div className="flex items-center gap-3 flex-shrink-0">
               <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
                 <span className="text-2xl text-secondary font-bold">ВОИ</span>
               </div>
             </div>
             
-            <nav className="hidden lg:flex items-center gap-6 flex-1 justify-center">
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6 flex-1 justify-center">
               {menuItems.map((item) => (
                 <a
                   key={item}
                   href="#"
-                  className="text-xs font-medium text-primary hover:text-secondary transition-colors"
+                  className="text-xs font-medium text-primary hover:text-secondary transition-colors whitespace-nowrap py-2"
                 >
                   {item}
                 </a>
               ))}
             </nav>
 
-            <Button className="bg-secondary text-primary hover:bg-secondary/90 font-medium">
+            <Button className="hidden lg:flex bg-secondary text-primary hover:bg-secondary/90 font-medium whitespace-nowrap flex-shrink-0">
               <Icon name="Users" className="mr-2 h-4 w-4" />
               Версия для слабовидящих
             </Button>
 
-            <Button variant="ghost" className="lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            <Button variant="ghost" className="lg:hidden flex-shrink-0" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <Icon name="Menu" className="h-6 w-6" />
             </Button>
           </div>
