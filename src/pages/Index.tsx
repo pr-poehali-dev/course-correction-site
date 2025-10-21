@@ -1,10 +1,29 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Сообщение отправлено!",
+      description: "Мы свяжемся с вами в ближайшее время.",
+    });
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
   const menuItems = [
     "О НАС",
     "СТРУКТУРА ХМАО ВОИ",
@@ -242,14 +261,52 @@ const Index = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 space-y-2">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                      НАПИСАТЬ
+                  <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-sm font-medium text-primary">
+                        Имя
+                      </Label>
+                      <Input
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className="border-secondary/30 focus:border-secondary"
+                        placeholder="Ваше имя"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-sm font-medium text-primary">
+                        Email
+                      </Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="border-secondary/30 focus:border-secondary"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="message" className="text-sm font-medium text-primary">
+                        Сообщение
+                      </Label>
+                      <Textarea
+                        id="message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        required
+                        className="border-secondary/30 focus:border-secondary min-h-[100px]"
+                        placeholder="Ваше сообщение..."
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white">
+                      <Icon name="Send" className="mr-2 h-4 w-4" />
+                      Отправить
                     </Button>
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                      СООБЩЕНИЕ
-                    </Button>
-                  </div>
+                  </form>
                 </CardContent>
               </Card>
             </div>
