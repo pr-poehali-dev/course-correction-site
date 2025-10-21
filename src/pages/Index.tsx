@@ -189,6 +189,84 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-8 w-1 bg-secondary"></div>
+                <h2 className="text-4xl font-bold text-primary">О нас</h2>
+              </div>
+              <div className="space-y-6 text-lg text-muted-foreground">
+                <p className="leading-relaxed">
+                  Ханты-Мансийская региональная организация Общероссийской общественной 
+                  организации инвалидов — это крупнейшее объединение людей с ограниченными 
+                  возможностями здоровья в регионе.
+                </p>
+                <p className="leading-relaxed">
+                  Мы работаем над улучшением качества жизни инвалидов, защитой их прав и 
+                  интересов, созданием условий для полноценной интеграции в общество.
+                </p>
+                <div className="grid sm:grid-cols-3 gap-6 pt-6">
+                  <div className="text-center p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg">
+                    <div className="text-4xl font-bold text-secondary mb-2">1500+</div>
+                    <div className="text-sm text-primary font-medium">Членов организации</div>
+                  </div>
+                  <div className="text-center p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg">
+                    <div className="text-4xl font-bold text-secondary mb-2">50+</div>
+                    <div className="text-sm text-primary font-medium">Проектов в год</div>
+                  </div>
+                  <div className="text-center p-6 bg-gradient-to-br from-secondary/10 to-secondary/5 rounded-lg">
+                    <div className="text-4xl font-bold text-secondary mb-2">25</div>
+                    <div className="text-sm text-primary font-medium">Лет опыта</div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-4 pt-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                      <Icon name="Shield" className="h-6 w-6 text-secondary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-primary">Защита прав</div>
+                      <div className="text-sm">Юридическая поддержка</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                      <Icon name="Heart" className="h-6 w-6 text-secondary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-primary">Поддержка</div>
+                      <div className="text-sm">Социальная помощь</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-secondary/20 flex items-center justify-center">
+                      <Icon name="Users" className="h-6 w-6 text-secondary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-primary">Сообщество</div>
+                      <div className="text-sm">Мероприятия и клубы</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+                <img
+                  src="https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/07e71bb3-613b-41be-b8b8-5552764b911f.jpg"
+                  alt="О нас"
+                  className="relative rounded-2xl shadow-2xl w-full h-auto object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 bg-gradient-to-b from-white to-muted/30">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-3 mb-8">
