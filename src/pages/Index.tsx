@@ -392,6 +392,80 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-gradient-to-b from-muted/30 to-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="h-8 w-1 bg-secondary"></div>
+              <h2 className="text-4xl font-bold text-primary">Наши достижения</h2>
+              <div className="h-8 w-1 bg-secondary"></div>
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              За годы работы мы реализовали множество значимых проектов и получили признание на региональном и федеральном уровнях
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <Card className="text-center p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-all hover:shadow-xl group">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary to-secondary/60 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Icon name="Award" className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-3xl font-bold text-secondary mb-2">15</h3>
+              <p className="text-sm text-primary font-medium">Региональных наград</p>
+            </Card>
+
+            <Card className="text-center p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-all hover:shadow-xl group">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary to-secondary/60 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Icon name="Trophy" className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-3xl font-bold text-secondary mb-2">8</h3>
+              <p className="text-sm text-primary font-medium">Федеральных грантов</p>
+            </Card>
+
+            <Card className="text-center p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-all hover:shadow-xl group">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary to-secondary/60 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Icon name="Users" className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-3xl font-bold text-secondary mb-2">5000+</h3>
+              <p className="text-sm text-primary font-medium">Человек получили помощь</p>
+            </Card>
+
+            <Card className="text-center p-8 border-2 border-secondary/20 hover:border-secondary/50 transition-all hover:shadow-xl group">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-secondary to-secondary/60 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Icon name="Sparkles" className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-3xl font-bold text-secondary mb-2">120+</h3>
+              <p className="text-sm text-primary font-medium">Мероприятий проведено</p>
+            </Card>
+          </div>
+
+          <div className="text-center mb-12">
+            <h3 className="text-3xl font-bold text-primary mb-8">Наши партнёры</h3>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {[
+              { name: "Правительство ХМАО", icon: "Building2" },
+              { name: "Минтруд России", icon: "Briefcase" },
+              { name: "ПФР", icon: "Landmark" },
+              { name: "Фонд поддержки", icon: "HandHeart" },
+              { name: "Здравоохранение", icon: "HeartPulse" },
+              { name: "Образование", icon: "GraduationCap" },
+            ].map((partner, index) => (
+              <Card
+                key={index}
+                className="p-6 flex flex-col items-center justify-center gap-3 hover:shadow-lg transition-all hover:scale-105 border-secondary/10"
+              >
+                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                  <Icon name={partner.icon as any} className="h-6 w-6 text-secondary" />
+                </div>
+                <p className="text-xs text-center font-medium text-primary">{partner.name}</p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <footer className="bg-primary text-white py-8 border-t-4 border-secondary">
         <div className="container mx-auto px-4">
           <div className="text-center">
