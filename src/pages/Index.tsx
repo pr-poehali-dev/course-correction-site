@@ -59,7 +59,7 @@ const Index = () => {
                 <a
                   key={item}
                   href="#"
-                  className="text-xs font-medium text-primary hover:text-secondary transition-colors whitespace-nowrap py-2"
+                  className="text-xs font-medium text-primary hover:text-secondary transition-all whitespace-nowrap py-2 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-secondary after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100"
                 >
                   {item}
                 </a>
