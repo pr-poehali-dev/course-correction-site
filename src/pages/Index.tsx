@@ -20,17 +20,17 @@ const Index = () => {
 
   const newsItems = [
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/3a70d3c7-4bf8-41ab-bddf-7603ba7a68ba.jpg",
       title: "Хотите чувствовать себя лучше, выглядеть моложе и забыть о депрессии?",
       time: "22 часа назад",
     },
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/580b1c4e-a922-4c9d-862c-19d93ebf3eaa.jpg",
       title: "В Югре ужесточились правила оказания медпомощи иностранцам",
       time: "22 часа назад",
     },
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/172d72a6-5726-479d-96b9-08c3155b146d.jpg",
       title: "В преддверии празднование праздника Дня Отца «ВместеПапой!» В ДК «Ника»",
       time: "22 часа назад",
     },
@@ -67,7 +67,7 @@ const Index = () => {
               ))}
             </nav>
 
-            <Button className="hidden lg:flex bg-red-600 text-white hover:bg-red-700 font-medium whitespace-nowrap flex-shrink-0">
+            <Button className="hidden lg:flex bg-green-700 text-white hover:bg-green-800 font-medium whitespace-nowrap flex-shrink-0">
               <Icon name="Eye" className="mr-2 h-4 w-4" />
               Версия для слабовидящих
             </Button>
