@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuItems = [
     "О НАС",
     "СТРУКТУРА ХМАО ВОИ",
@@ -17,17 +19,17 @@ const Index = () => {
 
   const newsItems = [
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/63616d52-e379-4956-9dad-4aed26ee3805.jpg",
       title: "Хотите чувствовать себя лучше, выглядеть моложе и забыть о депрессии?",
       time: "22 часа назад",
     },
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/be46cb50-d5d8-40f8-a8b8-c6bd10e5bfe5.jpg",
       title: "В Югре ужесточились правила оказания медпомощи иностранцам",
       time: "22 часа назад",
     },
     {
-      image: "https://cdn.poehali.dev/files/d75dae69-2135-4ea7-8cae-ebc4e731a63b.png",
+      image: "https://cdn.poehali.dev/projects/4525f3ee-5dd9-42f8-9d97-92f0e20f200a/files/80087ea1-38b0-4f8b-ba2b-64f839514140.jpg",
       title: 'В преддверии празднование праздника Дня Отца «ВместеПапой!» В ДК «Nika»',
       time: "22 часа назад",
     },
@@ -69,10 +71,27 @@ const Index = () => {
               Версия для слабовидящих
             </Button>
 
-            <Button variant="ghost" className="lg:hidden">
+            <Button variant="ghost" className="lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <Icon name="Menu" className="h-6 w-6" />
             </Button>
           </div>
+          
+          {mobileMenuOpen && (
+            <div className="lg:hidden border-t py-4 animate-fade-in">
+              <nav className="flex flex-col gap-3">
+                {menuItems.map((item) => (
+                  <a
+                    key={item}
+                    href="#"
+                    className="text-sm font-medium text-primary hover:text-secondary transition-colors px-4 py-2 hover:bg-muted rounded"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
